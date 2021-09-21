@@ -88,15 +88,17 @@ class MyanmarPhone implements MyanmarPhoneContract
     /**
      * @param string $number
      */
-    public function setStrPhoneNumber($number)
+    public function setStrPhoneNumber($number): MyanmarPhone
     {
         $this->strPhoneNumber = $number;
+
+        return $this;
     }
 
     /**
      * @return string
      */
-    public function getStrPhoneNumber(): string
+    public function getStrPhoneNumber(): ?string
     {
         return $this->strPhoneNumber;
     }
