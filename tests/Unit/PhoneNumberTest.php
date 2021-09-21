@@ -6,7 +6,7 @@
 namespace MyanmarPhone\Tests\Unit;
 
 use libphonenumber\PhoneNumberFormat;
-use MyanmarPhone\Contracts\MyanmarPhone as MyanmarPhoneContract;
+use MyanmarPhone\Contracts\MyanmarPhone;
 use MyanmarPhone\Facades\MyanPhone;
 use MyanmarPhone\Helpers\DataSource;
 use MyanmarPhone\Tests\Helpers\Data;
@@ -19,7 +19,7 @@ class PhoneNumberTest extends TestCase
     {
         $initCall = MyanPhone::make(Data::INTERNATIONAL_NUMBER);
 
-        $this->assertInstanceOf(MyanmarPhoneContract::class, $initCall);
+        $this->assertInstanceOf(MyanmarPhone::class, $initCall);
     }
 
     /** @test */
