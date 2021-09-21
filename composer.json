@@ -1,0 +1,55 @@
+{
+    "name": "fawkescreatives/myanmar-phone",
+    "description": "This package is for building easy to do Myanmar phone number in laravel.",
+    "keywords": [
+        "laravel",
+        "myanmar",
+        "phone",
+        "phone-number",
+        "myanmar-phone",
+        "myanmar-phone-number"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fawkes Creatives",
+            "email": "fawkescreatives@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MyanmarPhone\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MyanmarPhone\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.1|^8.0",
+        "illuminate/support": "^5.6|^6.0|^7.0|^8.0",
+        "giggsey/libphonenumber-for-php": "^7.0|^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0|^8.0|^9.0",
+        "orchestra/testbench": "^4.0|^5.0|^6.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MyanmarPhone\\MyanmarPhoneServiceProvider"
+            ],
+            "aliases": {
+                "MyanmarPhone": "MyanPhone"
+            }
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php ./vendor/bin/testbench package:discover --ansi"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
