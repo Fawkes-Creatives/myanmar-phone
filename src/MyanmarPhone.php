@@ -222,4 +222,13 @@ class MyanmarPhone implements MyanmarPhoneContract
             ->setSeparator($separator)
             ->format(PhoneNumberFormat::NATIONAL);
     }
+
+    /**
+     * @return bool
+     * @throws Exception
+     */
+    public function check(): bool
+    {
+        return $this->isMpt() || $this->isTelenor() || $this->isOoredoo() || $this->isMyTel() || $this->isMec();
+    }
 }
