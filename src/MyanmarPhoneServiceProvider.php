@@ -8,6 +8,7 @@ namespace MyanmarPhone;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use MyanmarPhone\Contracts\MyanmarPhone as MyanmarPhoneContract;
+use MyanmarPhone\Validations\MyanmarPhoneValidation;
 
 class MyanmarPhoneServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,8 @@ class MyanmarPhoneServiceProvider extends ServiceProvider
                 __DIR__ . '/config/myanmar_phone.php' => $this->app->configPath('myanmar_phone.php'),
             ]);
         }
+
+        $this->app['validator']->extendDependent('myanmar_phone', MyanmarPhoneValidation::class . '@validate');
     }
 
     public function register()
