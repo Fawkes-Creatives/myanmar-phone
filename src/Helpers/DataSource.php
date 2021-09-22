@@ -69,4 +69,15 @@ class DataSource
     {
         return config('myanmar_phone.default_format');
     }
+
+    public function getMyanmarTelecoms(): array
+    {
+        return [
+            self::MPT,
+            self::OOREDOO,
+            self::MYTEL,
+            self::TELENOR,
+            self::MEC
+        ];
+    }
 }
