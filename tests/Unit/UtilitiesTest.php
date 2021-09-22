@@ -11,7 +11,7 @@ use MyanmarPhone\Helpers\DataSource;
 use MyanmarPhone\Tests\Helpers\Data;
 use MyanmarPhone\Tests\TestCase;
 
-class FunctionTest extends TestCase
+class UtilitiesTest extends TestCase
 {
     /** @test */
     public function it_can_get_phone_number()
