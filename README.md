@@ -1,4 +1,9 @@
-# Myanmar Phone
+<h1 align="center">Laravel Myanmar Phone</h1>
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/fawkescreatives/myanmar-phone.svg)](https://packagist.org/packages/fawkescreatives/myanmar-phone)
+[![Laravel 8.x](https://img.shields.io/badge/Laravel-8.x-red.svg)](http://laravel.com)
+[![Total Downloads](https://poser.pugx.org/fawkescreatives/myanmar-phone/downloads)](https://packagist.org/packages/fawkescreatives/myanmar-phone)
+[![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://packagist.org/packages/fawkescreatives/myanmar-phone)
 
 Myanmar phone number များနှင့်ပတ်သက်ပြီး format လုပ်ခြင်းနှင့် check လုပ်နိုင်ရန်ရည်ရွယ်ပြီးတည်ဆောက်သည်။
 
@@ -85,3 +90,15 @@ MyanPhone::make($phone)->format(2); // look format number in config
 - getCountryCode()
 - getStrPhoneNumber()
 - getPhoneNumber($leadingZero = true)
+
+## Testing
+
+You can run the tests with:
+
+```bash
+composer test
+```
+
+### License
+
+The MIT License (MIT). Please see [License File](https://github.com/Fawkes-Creatives/myanmar-phone/blob/main/LICENSE.md) for more information.
