@@ -67,7 +67,7 @@ public function index()
 {
     $phone = '09251234567';
         
-    return MyanPhone::make($phone);
+    return MyanPhone::make($phone)->getPhoneNumber();
 }
 ```
 
