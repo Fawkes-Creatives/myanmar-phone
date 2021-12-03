@@ -25,8 +25,14 @@
         "giggsey/libphonenumber-for-php": "^8.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.0",
-        "orchestra/testbench": "^6.0"
+        "nunomaduro/collision": "^5.10",
+        "nunomaduro/larastan": "^1.0",
+        "orchestra/testbench": "^6.22",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0"
     },
     "autoload": {
         "psr-4": {
@@ -38,6 +44,14 @@
             "MyanmarPhone\\Tests\\": "tests/"
         }
     },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
     "extra": {
         "laravel": {
             "providers": [
@@ -48,12 +62,6 @@
             }
         }
     },
-    "scripts": {
-        "test": "vendor/bin/phpunit"
-    },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "config": {
-        "sort-packages": true
-    }
+    "prefer-stable": true
 }
