@@ -19,7 +19,7 @@ class MyanmarPhoneServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/config/myanmar_phone.php' => $this->app->configPath('myanmar_phone.php'),
+                __DIR__ . '/../config/myanmar_phone.php' => $this->app->configPath('myanmar_phone.php'),
             ]);
         }
 
@@ -28,7 +28,7 @@ class MyanmarPhoneServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/config/myanmar_phone.php', 'myanmar_phone');
+        $this->mergeConfigFrom(__DIR__ . '/../config/myanmar_phone.php', 'myanmar_phone');
 
         $this->app->bind(MyanmarPhoneContract::class, function ($app) {
             return $app->make(MyanmarPhone::class);
