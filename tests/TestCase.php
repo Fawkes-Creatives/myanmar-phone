@@ -10,9 +10,13 @@ use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
 {
+    protected $validator;
+
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->validator = $this->app['validator'];
     }
 
     protected function getPackageProviders($app): array
