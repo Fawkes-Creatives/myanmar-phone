@@ -19,7 +19,7 @@ class MyanmarPhoneServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/myanmar_phone.php' => $this->app->configPath('myanmar_phone.php'),
+                __DIR__ . './../config/myanmar_phone.php' => $this->app->configPath('myanmar_phone.php'),
             ]);
         }
 

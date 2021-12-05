@@ -14,7 +14,9 @@ Myanmar phone number များနှင့်ပတ်သက်ပြီး f
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
+    - [Validation](#validation)
     - [Functions](#functions)
+
 </p>
 
 ## Installation
@@ -36,6 +38,7 @@ MyanmarPhone\MyanmarPhoneServiceProvider::class,
 ```
 
 ## Configuration
+
 ```bash
 php artisan vendor:publish --provider="MyanmarPhone\MyanmarPhoneServiceProvider"
 ```
@@ -45,6 +48,7 @@ php artisan vendor:publish --provider="MyanmarPhone\MyanmarPhoneServiceProvider"
 ## Usage
 
 - Option 1: Use Injection
+
 ```php
 use MyanmarPhone\MyanmarPhone;
 
@@ -57,6 +61,7 @@ public function index(MyanmarPhone $service)
 ```
 
 - Option 2: Use Facade
+
 ```php
 use MyanmarPhone\Facades\MyanPhone;
 
@@ -68,9 +73,22 @@ public function index()
 }
 ```
 
+### Validation
+
+eg..,
+
+```php
+Validator::make($data, [
+    'phone_number' => [
+        'myanmar_phone'
+    ],
+]);
+```
+
 ### Functions
 
 eg..,
+
 ```php
 MyanPhone::make($phone)->format(2); // look format number in config
 ```
@@ -101,4 +119,5 @@ composer test
 
 ### License
 
-The MIT License (MIT). Please see [License File](https://github.com/Fawkes-Creatives/myanmar-phone/blob/main/LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/Fawkes-Creatives/myanmar-phone/blob/main/LICENSE.md)
+for more information.
