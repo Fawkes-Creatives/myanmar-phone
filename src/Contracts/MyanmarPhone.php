@@ -5,13 +5,18 @@
 
 namespace MyanmarPhone\Contracts;
 
+use libphonenumber\NumberParseException;
+use MyanmarPhone\Exceptions\InvalidNumber;
+
 interface MyanmarPhone
 {
     /**
      * @param string $number
-     * @return $this
+     * @return MyanmarPhone
+     * @throws InvalidNumber
+     * @throws NumberParseException
      */
-    public function make($number): self;
+    public function make(string $number): ?self;
 
     /**
      * @param string|int|null $format
