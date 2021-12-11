@@ -5,7 +5,6 @@
 
 namespace MyanmarPhone\Traits;
 
-use Exception;
 use libphonenumber\PhoneNumberFormat;
 use MyanmarPhone\Exceptions\FormatException;
 use MyanmarPhone\Exceptions\InvalidNumber;
@@ -14,19 +13,19 @@ use ReflectionClass;
 trait Parser
 {
     /**
-     * @param string|int $format
+     * @param int|string  $format
      * @return int|string
-     * @throws Exception
+     * @throws FormatException
      */
     public function parseFormat($format)
     {
         if (in_array($format, static::libphonenumberFormats())) {
             return $format;
         }
-
+    
         throw new FormatException();
     }
-
+    
     /**
      * Return phone number formats with libphonenumber
      * @return array
@@ -36,89 +35,85 @@ trait Parser
         return with(new ReflectionClass(PhoneNumberFormat::class))
             ->getConstants();
     }
-
+    
     /**
      * @throws InvalidNumber
      */
-    public function normalize($number): string
+    public function normalize(string $number): string
     {
         if (mb_strlen($number) < $this->getDataSource()->getPureNumberMinLength()) {
             throw new InvalidNumber();
         }
-
+        
         $number = $this->normalizeDigits($number);
         $number = $this->normalizeLeadingZero($number);
         $number = $this->normalizeAreaCode($number);
-
+        
         return $this->normalizeCountryCode($number);
     }
-
+    
     /**
      * Get only digits
-     * @param $number
+     * @param  string  $number
      * @return string
      */
-    public function normalizeDigits($number): string
+    public function normalizeDigits(string $number): string
     {
         return preg_replace('/[^0-9]/', '', trim($number));
     }
-
+    
     /**
      * Remove leading zero
-     * @param $number
+     * @param  string  $number
      * @return string
      */
-    public function normalizeLeadingZero($number): string
+    public function normalizeLeadingZero(string $number): string
     {
         return ltrim($number, "0");
     }
-
+    
     public function normalizeAreaCode($number): string
     {
-        if (!preg_match("/\b9\d+/", $number)) {
-            $number = "9$number";
-        }
-
-        return $number;
+        return sprintf('%9d', $number);
     }
-
+    
     /**
      * Remove country code
-     * @param $number
+     * @param  string  $number
      * @return string
      */
-    public function normalizeCountryCode($number): string
+    public function normalizeCountryCode(string $number): string
     {
         $max = $this->getDataSource()->getNormalizeMaxLength();
         $prefixCode = $this->getDataSource()->getPrefixCode();
-
+        
         do {
             $number = preg_replace("/^\+?$prefixCode/", '', $number);
         } while (mb_strlen($number) > $max);
-
+        
         return $number;
     }
-
+    
     /**
-     * @param $number
-     * @param string $replacement
+     * @param  string  $number
+     * @param  string  $replacement
      * @return string|null
      */
-    public function normalizeWhiteSpaceAndDash($number, $replacement = ''): ?string
+    public function normalizeWhiteSpaceAndDash(string $number, $replacement = ''): ?string
     {
         return preg_replace('/[- )(]/', $replacement, trim($number));
     }
-
+    
     /**
-     * @param $number
+     * @param  string  $number
      * @return string
      * @throws InvalidNumber
      */
-    public function parseStrPhoneNumber($number): string
+    public function parseStrPhoneNumber(string $number): string
     {
         $number = $this->normalize($number);
         $this->setStrPhoneNumber($number);
-
+        
         return $this->getPhoneNumber(true);
     }
 }

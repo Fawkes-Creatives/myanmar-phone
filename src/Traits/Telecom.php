@@ -13,11 +13,11 @@ trait Telecom
 {
     /**
      * @param string|null $number
-     * @param $pattern
+     * @param string $pattern
      * @return bool
      * @throws Exception
      */
-    protected function isOperator($number = null, $pattern): bool
+    protected function isOperator(string $number = null, string $pattern): bool
     {
         if (is_null($number)) {
             $number = $this->formatE164();
