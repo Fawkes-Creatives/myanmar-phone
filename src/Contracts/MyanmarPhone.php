@@ -50,41 +50,41 @@ interface MyanmarPhone
      * @param string|null $number
      * @return string
      */
-    public function operator($number = null): string;
+    public function operator(string $number = null): string;
 
     /**
      * @param string|null $number
      * @return string
      */
-    public function telecom($number = null): string;
+    public function telecom(string $number = null): string;
 
     /**
      * @param string|null $number
      * @return bool
      */
-    public function isTelenor($number = null): bool;
+    public function isTelenor(string $number = null): bool;
 
     /**
      * @param string|null $number
      * @return bool
      */
-    public function isOoredoo($number = null): bool;
+    public function isOoredoo(string $number = null): bool;
 
     /**
      * @param string|null $number
      * @return bool
      */
-    public function isMpt($number = null): bool;
+    public function isMpt(string $number = null): bool;
 
     /**
      * @param string|null $number
      * @return bool
      */
-    public function isMyTel($number = null): bool;
+    public function isMyTel(string $number = null): bool;
 
     /**
      * @param string|null $number
      * @return bool
      */
-    public function isMec($number = null): bool;
+    public function isMec(string $number = null): bool;
 }
