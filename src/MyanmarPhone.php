@@ -20,32 +20,32 @@ use MyanmarPhone\Traits\Telecom;
 class MyanmarPhone implements MyanmarPhoneContract
 {
     use Macroable, Parser, Telecom;
-    
+
     /**
      * @var PhoneNumberUtil
      */
     protected $lib;
-    
+
     /**
      * @var DataSource
      */
     protected $dataSource;
-    
+
     /**
      * @var PhoneNumber
      */
     protected $phoneInstance;
-    
+
     /**
      * @var string|null
      */
     protected $separator = null;
-    
+
     /**
      * @var string
      */
     protected $strPhoneNumber;
-    
+
     /**
      * Initiative libphonenumber and DataSource class
      */
@@ -54,7 +54,7 @@ class MyanmarPhone implements MyanmarPhoneContract
         $this->lib = PhoneNumberUtil::getInstance();
         $this->dataSource = $dataSource;
     }
-    
+
     /**
      * @param  string  $number
      * @return MyanmarPhoneContract
@@ -64,13 +64,13 @@ class MyanmarPhone implements MyanmarPhoneContract
     public function make(string $number): MyanmarPhoneContract
     {
         $number = $this->normalize($number);
-        
+
         $this->phoneInstance = $this->lib->parse($number,
             $this->getDataSource()->getRegionCode());
-        
+
         return $this;
     }
-    
+
     /**
      * @return PhoneNumber
      */
@@ -78,7 +78,7 @@ class MyanmarPhone implements MyanmarPhoneContract
     {
         return $this->phoneInstance;
     }
-    
+
     /**
      * @return DataSource
      */
@@ -86,17 +86,18 @@ class MyanmarPhone implements MyanmarPhoneContract
     {
         return $this->dataSource;
     }
-    
+
     /**
-     * @param  string  $number
+     * @param string $number
+     * @return MyanmarPhone
      */
-    public function setStrPhoneNumber($number): MyanmarPhone
+    public function setStrPhoneNumber(string $number): MyanmarPhone
     {
         $this->strPhoneNumber = $number;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string
      */
@@ -104,7 +105,7 @@ class MyanmarPhone implements MyanmarPhoneContract
     {
         return $this->strPhoneNumber;
     }
-    
+
     /**
      * @return null|string
      */
@@ -112,26 +113,26 @@ class MyanmarPhone implements MyanmarPhoneContract
     {
         return (string) $this->getPhoneInstance()->getCountryCode();
     }
-    
+
     /**
-     * @param  bool  $leadingZero
+     * @param bool $leadingZero
      * @return string
      */
-    public function getPhoneNumber($leadingZero = true): string
+    public function getPhoneNumber(bool $leadingZero = true): string
     {
         $number = $this->getStrPhoneNumber();
-        
+
         if (is_null($number)) {
             $number = $this->getPhoneInstance()->getNationalNumber();
         }
-        
+
         if ($leadingZero) {
             $number = "0$number";
         }
-        
+
         return $number;
     }
-    
+
     /**
      * @param  string|int|null  $format
      * @return string
@@ -142,17 +143,17 @@ class MyanmarPhone implements MyanmarPhoneContract
         if (is_null($format)) {
             $format = $this->getDataSource()->getDefaultFormat();
         }
-        
+
         $parsedFormat = $this->parseFormat($format);
-        
+
         $number = $this->lib->format(
             $this->getPhoneInstance(),
             $parsedFormat
         );
-        
+
         return $this->response($number);
     }
-    
+
     /**
      * @param  null  $separator
      * @return $this
@@ -160,10 +161,10 @@ class MyanmarPhone implements MyanmarPhoneContract
     public function setSeparator($separator = null): self
     {
         $this->separator = $separator;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string|null
      */
@@ -171,7 +172,7 @@ class MyanmarPhone implements MyanmarPhoneContract
     {
         return $this->separator;
     }
-    
+
     /**
      * @param  string  $number
      * @return null|string
@@ -181,10 +182,10 @@ class MyanmarPhone implements MyanmarPhoneContract
         if (!is_null($this->getSeparator())) {
             $number = $this->normalizeWhiteSpaceAndDash($number, $this->getSeparator());
         }
-        
+
         return $number;
     }
-    
+
     /**
      * @return string
      * @throws Exception
@@ -193,7 +194,7 @@ class MyanmarPhone implements MyanmarPhoneContract
     {
         return $this->format(PhoneNumberFormat::E164);
     }
-    
+
     /**
      * @return string
      * @throws Exception
@@ -202,7 +203,7 @@ class MyanmarPhone implements MyanmarPhoneContract
     {
         return $this->format(PhoneNumberFormat::INTERNATIONAL);
     }
-    
+
     /**
      * @param  string|null  $separator
      * @return string
@@ -214,7 +215,7 @@ class MyanmarPhone implements MyanmarPhoneContract
             ->setSeparator($separator)
             ->format(PhoneNumberFormat::RFC3966);
     }
-    
+
     /**
      * @param  string|null  $separator
      * @return string
@@ -226,7 +227,7 @@ class MyanmarPhone implements MyanmarPhoneContract
             ->setSeparator($separator)
             ->format(PhoneNumberFormat::NATIONAL);
     }
-    
+
     /**
      * @return bool
      * @throws Exception
