@@ -33,7 +33,7 @@ trait Telecom
      * @return bool
      * @throws Exception
      */
-    public function isTelenor($number = null): bool
+    public function isTelenor(string $number = null): bool
     {
         return $this->isOperator($number, DataSource::TELENOR_PATTERN_FOR_MATCHING);
     }
@@ -43,7 +43,7 @@ trait Telecom
      * @return bool
      * @throws Exception
      */
-    public function isOoredoo($number = null): bool
+    public function isOoredoo(string $number = null): bool
     {
         return $this->isOperator($number, DataSource::OOREDOO_PATTERN_FOR_MATCHING);
     }
@@ -53,7 +53,7 @@ trait Telecom
      * @return bool
      * @throws Exception
      */
-    public function isMpt($number = null): bool
+    public function isMpt(string $number = null): bool
     {
         return $this->isOperator($number, DataSource::MPT_PATTERN_FOR_MATCHING);
     }
@@ -63,7 +63,7 @@ trait Telecom
      * @return bool
      * @throws Exception
      */
-    public function isMyTel($number = null): bool
+    public function isMyTel(string $number = null): bool
     {
         return $this->isOperator($number, DataSource::MYTEL_PATTERN_FOR_MATCHING);
     }
@@ -73,7 +73,7 @@ trait Telecom
      * @return bool
      * @throws Exception
      */
-    public function isMec($number = null): bool
+    public function isMec(string $number = null): bool
     {
         return $this->isOperator($number, DataSource::MEC_PATTERN_FOR_MATCHING);
     }
@@ -84,7 +84,7 @@ trait Telecom
      * @throws InvalidTelecom
      * @throws Exception
      */
-    public function telecom($number = null): string
+    public function telecom(string $number = null): string
     {
         if ($this->isMpt($number)) {
             return DataSource::MPT;
@@ -110,7 +110,7 @@ trait Telecom
      * @return string
      * @throws InvalidTelecom
      */
-    public function operator($number = null): string
+    public function operator(string $number = null): string
     {
         return $this->telecom($number);
     }
