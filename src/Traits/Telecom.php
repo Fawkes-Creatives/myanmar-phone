@@ -12,12 +12,9 @@ use MyanmarPhone\Helpers\DataSource;
 trait Telecom
 {
     /**
-     * @param string|null $number
-     * @param string $pattern
-     * @return bool
      * @throws Exception
      */
-    protected function isOperator(string $number = null, string $pattern): bool
+    protected function isOperator(?string $number, string $pattern): bool
     {
         if (is_null($number)) {
             $number = $this->formatE164();
@@ -25,66 +22,54 @@ trait Telecom
             $number = $this->parseStrPhoneNumber($number);
         }
 
-        return (bool)preg_match($pattern, $number);
+        return (bool) preg_match($pattern, $number);
     }
 
     /**
-     * @param string|null $number
-     * @return bool
      * @throws Exception
      */
-    public function isTelenor(string $number = null): bool
+    public function isTelenor(?string $number = null): bool
     {
         return $this->isOperator($number, DataSource::TELENOR_PATTERN_FOR_MATCHING);
     }
 
     /**
-     * @param string|null $number
-     * @return bool
      * @throws Exception
      */
-    public function isOoredoo(string $number = null): bool
+    public function isOoredoo(?string $number = null): bool
     {
         return $this->isOperator($number, DataSource::OOREDOO_PATTERN_FOR_MATCHING);
     }
 
     /**
-     * @param string|null $number
-     * @return bool
      * @throws Exception
      */
-    public function isMpt(string $number = null): bool
+    public function isMpt(?string $number = null): bool
     {
         return $this->isOperator($number, DataSource::MPT_PATTERN_FOR_MATCHING);
     }
 
     /**
-     * @param string|null $number
-     * @return bool
      * @throws Exception
      */
-    public function isMyTel(string $number = null): bool
+    public function isMyTel(?string $number = null): bool
     {
         return $this->isOperator($number, DataSource::MYTEL_PATTERN_FOR_MATCHING);
     }
 
     /**
-     * @param string|null $number
-     * @return bool
      * @throws Exception
      */
-    public function isMec(string $number = null): bool
+    public function isMec(?string $number = null): bool
     {
         return $this->isOperator($number, DataSource::MEC_PATTERN_FOR_MATCHING);
     }
 
     /**
-     * @param string|null $number
-     * @return string
      * @throws InvalidTelecom
      * @throws Exception
      */
-    public function telecom(string $number = null): string
+    public function telecom(?string $number = null): string
     {
         if ($this->isMpt($number)) {
             return DataSource::MPT;
@@ -106,11 +91,9 @@ trait Telecom
     }
 
     /**
-     * @param string|null $number
-     * @return string
      * @throws InvalidTelecom
      */
-    public function operator(string $number = null): string
+    public function operator(?string $number = null): string
     {
         return $this->telecom($number);
     }

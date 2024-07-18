@@ -9,5 +9,5 @@ class InvalidNumber extends AbstractMyanmarPhoneException
 {
     protected $code = 400;
 
-    protected $message = "Invalid phone number";
+    protected $message = 'Invalid phone number';
 }

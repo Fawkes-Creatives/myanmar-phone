@@ -7,7 +7,4 @@ namespace MyanmarPhone\Exceptions;
 
 use Exception;
 
-abstract class AbstractMyanmarPhoneException extends Exception
-{
-
-}
+abstract class AbstractMyanmarPhoneException extends Exception {}
