@@ -18,12 +18,12 @@ class MyanmarPhoneValidation
      * @var Application|mixed|MyanmarPhone
      */
     protected $myanmarPhone;
-    
+
     public function __construct()
     {
         $this->myanmarPhone = app(MyanmarPhone::class);
     }
-    
+
     /**
      * @throws BindingResolutionException
      * @throws NumberParseException

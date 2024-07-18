@@ -1,8 +1,8 @@
 <h1 align="center">Laravel Myanmar Phone</h1>
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/fawkescreatives/myanmar-phone.svg)](https://packagist.org/packages/fawkescreatives/myanmar-phone)
-[![Laravel 8.x](https://img.shields.io/badge/Laravel-8.x-red.svg)](https://laravel.com/docs/8.x)
-[![Laravel 9.x](https://img.shields.io/badge/Laravel-9.x-red.svg)](https://laravel.com)
+[![Laravel 10.x](https://img.shields.io/badge/Laravel-10.x-red.svg)](https://laravel.com/docs/10.x)
+[![Laravel 11.x](https://img.shields.io/badge/Laravel-11.x-red.svg)](https://laravel.com/docs/11.x)
 [![Total Downloads](https://poser.pugx.org/fawkescreatives/myanmar-phone/downloads)](https://packagist.org/packages/fawkescreatives/myanmar-phone)
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://packagist.org/packages/fawkescreatives/myanmar-phone)
 
@@ -103,6 +103,19 @@ You can run the tests with:
 composer test
 ```
 
-### License
+## Changelog
 
-The MIT License (MIT). Please see [License File](https://github.com/Fawkes-Creatives/myanmar-phone/blob/main/LICENSE.md) for more information.
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Contributing
+
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
+
+## Security Vulnerabilities
+
+Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

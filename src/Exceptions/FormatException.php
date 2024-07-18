@@ -9,5 +9,5 @@ class FormatException extends AbstractMyanmarPhoneException
 {
     protected $code = 400;
 
-    protected $message = "Invalid format type";
+    protected $message = 'Invalid format type';
 }

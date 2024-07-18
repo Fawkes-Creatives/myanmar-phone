@@ -7,28 +7,28 @@ namespace MyanmarPhone\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use MyanmarPhone\Contracts\MyanmarPhone;
+use MyanmarPhone\Helpers\DataSource;
 
 /**
- * @method make(string $number))
- * @method getPhoneInstance()
- * @method getDataSource()
- * @method setStrPhoneNumber(string $number)
- * @method getStrPhoneNumber()
- * @method getCountryCode()
- * @method getPhoneNumber(bool $leadingZero = true)
- * @method format($format = null)
- * @method setSeparator($separator = null)
- * @method getSeparator()
- * @method response(string $number)
- * @method formatE164()
- * @method formatInternational()
- * @method formatRFC3966(string $separator = null)
- * @method formatNational(string $separator = null)
- * @method check()
+ * @method static \MyanmarPhone\MyanmarPhone make(string $number))
+ * @method static \libphonenumber\PhoneNumber getPhoneInstance()
+ * @method static DataSource getDataSource()
+ * @method static \MyanmarPhone\MyanmarPhone setStrPhoneNumber(string $number)
+ * @method static string|null getStrPhoneNumber()
+ * @method static string|null getCountryCode()
+ * @method static string getPhoneNumber(bool $leadingZero = true)
+ * @method static string format($format = null)
+ * @method static \MyanmarPhone\MyanmarPhone setSeparator($separator = null)
+ * @method static string|null getSeparator()
+ * @method static string|null response(string $number)
+ * @method static string formatE164()
+ * @method static string formatInternational()
+ * @method static string formatRFC3966(string $separator = null)
+ * @method static string formatNational(string $separator = null)
+ * @method static bool check()
  *
  * @see \MyanmarPhone\MyanmarPhone
  */
-
 class MyanPhone extends Facade
 {
     protected static function getFacadeAccessor(): string

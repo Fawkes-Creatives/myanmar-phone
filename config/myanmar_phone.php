@@ -15,5 +15,5 @@ return [
     | RFC3966 => 3 (eg.., tel:+95-9-123-456-789)
     |
     */
-    'default_format'    => 0, // 0 || 1 || 2 || 3
+    'default_format' => 0, // 0 || 1 || 2 || 3
 ];

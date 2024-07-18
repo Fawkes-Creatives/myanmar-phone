@@ -9,5 +9,5 @@ class InvalidTelecom extends AbstractMyanmarPhoneException
 {
     protected $code = 400;
 
-    protected $message = "Invalid Telecom";
+    protected $message = 'Invalid Telecom';
 }

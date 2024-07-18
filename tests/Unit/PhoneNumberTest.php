@@ -16,30 +16,30 @@ it('is config default format is e164', function () {
     config()->set('myanmar_phone.default_format', PhoneNumberFormat::E164);
     $phone = MyanPhone::make(Data::LOCAL_NUMBER);
     $result = $phone->format();
-    $this->assertStringStartsWith("+95", $result);
+    $this->assertStringStartsWith('+95', $result);
 });
 
 it('is config default format is international', function () {
     config()->set('myanmar_phone.default_format', PhoneNumberFormat::INTERNATIONAL);
     $phone = MyanPhone::make(Data::NATIONAL_NUMBER);
     $result = $phone->format();
-    $this->assertStringContainsString("+95 ", $result);
+    $this->assertStringContainsString('+95 ', $result);
 });
 
 it('is config default format is national', function () {
     config()->set('myanmar_phone.default_format', PhoneNumberFormat::NATIONAL);
     $phone = MyanPhone::make(Data::LOCAL_NUMBER);
     $result = $phone->format();
-    $this->assertStringStartsWith("09", $result);
-    $this->assertStringContainsString(" ", $result);
+    $this->assertStringStartsWith('09', $result);
+    $this->assertStringContainsString(' ', $result);
 });
 
 it('is config default format is rfc3966', function () {
     config()->set('myanmar_phone.default_format', PhoneNumberFormat::RFC3966);
     $phone = MyanPhone::make(Data::LOCAL_NUMBER);
     $result = $phone->format();
-    $this->assertStringStartsWith("tel", $result);
-    $this->assertStringContainsString("-", $result);
+    $this->assertStringStartsWith('tel', $result);
+    $this->assertStringContainsString('-', $result);
 });
 
 it('can be format', function () {
@@ -49,29 +49,29 @@ it('can be format', function () {
 
 it('can be formatE164', function () {
     $result = MyanPhone::make(Data::LOCAL_NUMBER)->formatE164();
-    $this->assertStringStartsWith("+95", $result);
+    $this->assertStringStartsWith('+95', $result);
 });
 
 it('can be formatInternational', function () {
     $result = MyanPhone::make(Data::LOCAL_NUMBER)->formatInternational();
-    $this->assertStringContainsString("+95 ", $result);
+    $this->assertStringContainsString('+95 ', $result);
 });
 
 it('can be formatRFC3966', function () {
     $result = MyanPhone::make(Data::LOCAL_NUMBER)->formatRFC3966();
-    $this->assertStringStartsWith("tel", $result);
-    $this->assertStringContainsString("-", $result);
+    $this->assertStringStartsWith('tel', $result);
+    $this->assertStringContainsString('-', $result);
 
     $result = MyanPhone::make(Data::LOCAL_NUMBER)->formatRFC3966('');
-    $this->assertStringNotContainsString("-", $result);
+    $this->assertStringNotContainsString('-', $result);
 });
 
 it('can be formatNational', function () {
     $result = MyanPhone::make(Data::LOCAL_NUMBER)->formatNational();
-    $this->assertStringStartsWith("09 ", $result);
+    $this->assertStringStartsWith('09 ', $result);
 
     $result = MyanPhone::make(Data::LOCAL_NUMBER)->formatNational('_');
-    $this->assertStringContainsString("_", $result);
+    $this->assertStringContainsString('_', $result);
 });
 
 it('can get operator', function () {
