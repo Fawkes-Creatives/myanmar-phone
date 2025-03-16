@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author fawkescreatives created on 20/09/2021
  */
@@ -24,7 +25,7 @@ trait Parser
             return $format;
         }
 
-        throw new FormatException();
+        throw new FormatException;
     }
 
     /**
@@ -42,7 +43,7 @@ trait Parser
     public function normalize(string $number): string
     {
         if (mb_strlen($number) < $this->getDataSource()->getPureNumberMinLength()) {
-            throw new InvalidNumber();
+            throw new InvalidNumber;
         }
 
         $number = $this->normalizeDigits($number);

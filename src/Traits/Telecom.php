@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author fawkescreatives created on 21/09/2021
  */
@@ -87,7 +88,7 @@ trait Telecom
             return DataSource::MYTEL;
         }
 
-        throw new InvalidTelecom();
+        throw new InvalidTelecom;
     }
 
     /**
